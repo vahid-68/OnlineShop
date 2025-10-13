@@ -1,6 +1,7 @@
 package com.example.onlineshop.data.model
 
-data class CategoryItem(
+data class CategoryCardItem(
     val imageRes: Int,
+
     val title: String
 )

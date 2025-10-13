@@ -3,7 +3,7 @@ package com.example.onlineshop.data.model
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 
-data class SliderItem(
+data class BannerSliderModel(
     val imageRes: Int,
     val title: String,
     val text: String,
@@ -13,7 +13,7 @@ data class SliderItem(
     val circleCenter:Color,
     val circleEdge: Color,
     val modifier: Modifier?=null,
-    val takhfif: Boolean?=null
+    val discount: Boolean?=null
 
 
     )

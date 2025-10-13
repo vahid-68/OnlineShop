@@ -38,15 +38,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.onlineshop.data.model.SliderItem
+import com.example.onlineshop.data.model.BannerSliderModel
 import com.example.onlineshop.ui.theme.LightOrange
 import com.example.onlineshop.ui.theme.Orange2
 import com.example.onlineshop.ui.theme.White
 import kotlinx.coroutines.delay
 
 @Composable
-fun CustomSlider(
-    items: List<SliderItem>,
+fun CustomBannerSlider(
+    items: List<BannerSliderModel>,
 
     delayTime: Long = 3000L,
     onItemClick: ((String) -> Unit)? = null
@@ -198,7 +198,7 @@ fun CustomSlider(
 
 
                 }
-                if (item.takhfif == true) {
+                if (item.discount == true) {
                     Box(
                         modifier = Modifier
 
