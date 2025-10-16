@@ -27,6 +27,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -36,9 +37,11 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDirection
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.IntRect
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.onlineshop.data.model.BannerSliderModel
+import com.example.onlineshop.data.model.BannerItemModel
 import com.example.onlineshop.ui.theme.LightOrange
 import com.example.onlineshop.ui.theme.Orange2
 import com.example.onlineshop.ui.theme.White
@@ -46,7 +49,10 @@ import kotlinx.coroutines.delay
 
 @Composable
 fun CustomBannerSlider(
-    items: List<BannerSliderModel>,
+    banners: List<BannerItemModel>,
+    modifier: Modifier = Modifier,
+
+
 
     delayTime: Long = 3000L,
     onItemClick: ((String) -> Unit)? = null
@@ -70,13 +76,15 @@ fun CustomBannerSlider(
 
     }
 
-    Column(
+    Box(
         modifier = Modifier
-            .fillMaxWidth(),
-        horizontalAlignment = Alignment.CenterHorizontally
+            .fillMaxWidth()
+            .height(190.dp)
     ) {
         HorizontalPager(
             state = pagerState,
+
+
 
             modifier = Modifier
                 .fillMaxWidth()
@@ -84,162 +92,48 @@ fun CustomBannerSlider(
 
 
         ) { page ->
-            val item = items[page % items.size]
+           val index = page % banners.size
 
-            Box(
+
+            CustomBannerCard(
+                item = banners[index],
                 modifier = Modifier
-                    .fillMaxSize()
-                    .padding(horizontal = 14.dp, vertical = 20.dp)
-
-            ) {
+                    .padding(horizontal = 8.dp)
 
 
-                val backgroundGradient = Brush.linearGradient(
-                    colors = listOf(
-                        item.backgroundStart, item.backgroundEnd
-                    ),
-                    start = Offset(0f, 0f),
-                    end = Offset(200f, 0f)
+            )
 
-                )
+        }
+                Row (
+                    modifier= Modifier
+                        .align(Alignment.BottomCenter)
+                        .padding(bottom = 18.dp),
+                    horizontalArrangement = Arrangement.Center
+                ){
+                    banners.forEachIndexed { i,_  ->
 
-                Card(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(190.dp),
-                    elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
-                    shape = RoundedCornerShape(16.dp)
-                ) {
+                        val isSelected=(pagerState.currentPage % banners.size)==i
 
-                    Box(
-                        modifier = Modifier
-                            .fillMaxSize()
-
-
-                            .background(backgroundGradient)
-                            .clickable {
-                                onItemClick?.invoke(item.title)
-                            }, contentAlignment = Alignment.Center
-                    ) {
-
-
-                        Row(
+                        Box(
                             modifier = Modifier
-                                .fillMaxSize(),
-                            horizontalArrangement = Arrangement.SpaceAround,
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            Column(
-                                modifier = Modifier
-
-
-                                    .width(181.dp),
-
-                                verticalArrangement = Arrangement.Center,
-                                horizontalAlignment = Alignment.End
-
-
-                            ) {
-                                Text(
-                                    modifier = Modifier
-                                        .fillMaxWidth(),
-
-                                    text = item.title,
-                                    color = Color.White,
-                                    fontSize = 18.sp,
-                                    fontWeight = FontWeight.ExtraBold,
-                                    textAlign = TextAlign.Center,
-                                    style = TextStyle(textDirection = TextDirection.Rtl)
-
-
+                                .padding(horizontal = 3.dp)
+                                .size(
+                                    if (isSelected)7.dp else 6.dp
                                 )
-                                SpacerHeight(5)
-                                Text(
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .padding(top = 5.dp),
-                                    text = item.text,
-                                    color = Color.White,
-                                    fontSize = 13.sp,
-                                    textAlign = TextAlign.Center,
-                                    lineHeight = 15.sp
-
-
+                                .clip(CircleShape)
+                                .background(
+                                    if (isSelected)White else White.copy(alpha = 0.4f)
                                 )
-                            }
-                            val circleGradient = Brush.radialGradient(
-                                colors = listOf(
-                                    item.circleCenter,
-                                    item.circleEdge
-                                )
-                            )
-
-                            Box(
-                                modifier = Modifier
-                                    .size(130.dp)
-                                    .background(circleGradient, shape = CircleShape),
-                                contentAlignment = Alignment.Center
-
-
-                            ) {
-                                Image(
-                                    painter = painterResource(item.imageRes),
-                                    contentDescription = item.title,
-                                    contentScale = ContentScale.Fit,
-                                    modifier = (item.modifier ?: Modifier)
-
-
-                                )
-                            }
-                        }
-
-
-                    }
-
-
-                }
-                if (item.discount == true) {
-                    Box(
-                        modifier = Modifier
-
-
-                            .align(Alignment.TopStart)
-                            .offset(x = (11).dp, y = (-9).dp)
-
-
-                            .background(
-                                brush = Brush.linearGradient(
-                                    colors = listOf(LightOrange, Orange2),
-                                    start = Offset(0f, 0f),
-                                    end = Offset(200f, 0f)
-                                ), shape = RoundedCornerShape(30.dp)
-                            )
-
-                            .height(22.dp)
-                            .width(70.dp),
-
-
-                        contentAlignment = Alignment.Center
-
-                    ) {
-                        Text(
-                            text = "تخفیف ویژه",
-                            textAlign = TextAlign.Center,
-                            color = White,
-                            fontSize = 10.sp,
-                            fontWeight = FontWeight.Bold,
                         )
                     }
                 }
 
-
             }
+
 
 
         }
 
 
-    }
 
 
-}

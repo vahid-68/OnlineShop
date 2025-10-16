@@ -16,51 +16,71 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
-import com.example.onlineshop.data.model.CategoryCardItem
+import androidx.compose.ui.unit.sp
+import com.example.onlineshop.data.model.CategoryItemModel
 import com.example.onlineshop.ui.theme.White
 
 
 @Composable
 fun CustomCategoryCard(
-    item: CategoryCardItem,
+    item: CategoryItemModel,
+    modifier: Modifier = Modifier,
 
 
-    onClick: () -> Unit,
+    onClick: (() -> Unit)?=null,
 
     ) {
-    Card(
-        modifier = Modifier
-
-            .height(115.dp)
-            .width(100.dp),
-        onClick = onClick,
-        elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = White
-        )
-    ) {
+    val cardWidth= item.cardWidth
+    val cardHeight= item.cardHeight
+    val imageSize=item.imageSize?:45.dp
+    val titleSize=item.titleSize?:12.sp
 
 
-        Column(
-            modifier = Modifier
-                .fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.SpaceEvenly
 
+        Card(
+            modifier = modifier
+                .height(cardHeight)
+                .width(cardWidth),
+
+
+
+
+            onClick = { onClick?.invoke() },
+            elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
+            colors = CardDefaults.cardColors(
+                containerColor = White
+            )
         ) {
-            Image(
-                painter = painterResource(item.imageRes),
-                contentDescription = item.title,
-                modifier = Modifier
-                    .size(55.dp)
-                    .padding(top = 8.dp)
-            )
-            Text(
-                text = item.title,
-                fontWeight = FontWeight.Bold
 
-            )
+
+            Column(
+                modifier = Modifier
+                    .fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.SpaceEvenly
+
+            ) {
+                Image(
+                    painter = painterResource(item.imageRes),
+                    contentDescription = item.title,
+                    modifier = Modifier
+                        .size(imageSize)
+                        .padding(top = 8.dp)
+                )
+                item.title?.let {
+                    Text(
+                        text = it,
+                        fontSize = titleSize,
+                        fontWeight = FontWeight.Bold,
+                        textAlign = TextAlign.Center
+
+                    )
+                }
+            }
         }
-    }
+
 }

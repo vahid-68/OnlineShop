@@ -24,14 +24,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.onlineshop.data.model.BannerSliderModel
+import com.example.onlineshop.data.model.BannerItemModel
 import com.example.onlineshop.ui.component.BackgroundApp
 import com.example.onlineshop.ui.component.CustomBannerSlider
 import com.example.onlineshop.ui.component.DropdownCardMenu
 
 import com.example.onlineshop.ui.component.HeaderApp
 import com.example.onlineshop.R
-import com.example.onlineshop.data.model.CategoryCardItem
+import com.example.onlineshop.data.model.CategoryItemModel
 import com.example.onlineshop.ui.component.CustomCategorySlider
 import com.example.onlineshop.ui.component.CustomTextField
 import com.example.onlineshop.ui.component.SpacerHeight
@@ -39,102 +39,87 @@ import com.example.onlineshop.ui.theme.Green1
 import com.example.onlineshop.ui.theme.Green2
 import com.example.onlineshop.ui.theme.Green3
 import com.example.onlineshop.ui.theme.Green4
+import com.example.onlineshop.ui.theme.LightOrange
+import com.example.onlineshop.ui.theme.Orange
 import com.example.onlineshop.ui.theme.Orange2
 import com.example.onlineshop.ui.theme.Yellow
 
 @Composable
 fun HomeScreen(
-    modifier: Modifier = Modifier
+
 ) {
     var menuExpanded by remember { mutableStateOf(false) }
     var stateSearch by remember { mutableStateOf("") }
-    val bannerSliderModels = listOf(
-        BannerSliderModel(
-            R.drawable.banner_product2,
-            "از ورزشت لذت ببر!",
-            description = "",
+    val banners = listOf(
+        BannerItemModel(
+            imageRes = R.drawable.banner_product2,
+            title = "از ورزشت لذت ببر!",
             text = "تولید و عرضه انواع کفش های اسپرت در همه سایز ها",
-            backgroundStart = Green1,
-            backgroundEnd = Green2,
-            circleCenter = Green3,
-            circleEdge = Green4,
-            discount = true,
-            modifier = Modifier
-                .padding(end = 25.dp, bottom = 15.dp)
 
-                .size(130.dp)
-        ),
-        BannerSliderModel(
+            description = "",
+
+            discount = true,
+
+
+            ),
+
+        BannerItemModel(
             R.drawable.banner_product,
             "از ورزشت لذت ببر!",
             description = "",
             text = "تولید و عرضه انواع کفش های اسپرت در همه سایز ها",
-            backgroundStart = Green1,
-            backgroundEnd = Green2,
-            circleCenter = Green3,
-            circleEdge = Green4,
-            discount = true,
-            modifier = Modifier
-                .padding(end = 25.dp, bottom = 15.dp)
 
-                .size(130.dp)
+            
+            bgGradient = listOf(Orange2, LightOrange),
+            circleGradient = listOf(Orange,LightOrange)
         ),
-
-        BannerSliderModel(
+        BannerItemModel(
             R.drawable.banner_product2,
             "از ورزشت لذت ببر!",
             description = "",
             text = "تولید و عرضه انواع کفش های اسپرت در همه سایز ها",
-            backgroundStart = Yellow,
-            backgroundEnd = Orange2,
-            circleCenter = Yellow,
-            circleEdge = Orange2,
-            modifier = Modifier
-                .size(100.dp)
-        ),
 
-        )
+discount = true
+            )
+    )
 
-    val categoryCardItems = listOf(
-        CategoryCardItem(
+    val categories = listOf(
+        CategoryItemModel(
             imageRes = R.drawable.img_category_man,
 
             title = "مردانه"
         ),
-        CategoryCardItem(
+        CategoryItemModel(
             imageRes = R.drawable.img_category_woman,
 
             title = "زنانه"
         ),
-        CategoryCardItem(
+        CategoryItemModel(
             imageRes = R.drawable.img_category_girl,
 
             title = "دخترانه"
         ),
-        CategoryCardItem(
+        CategoryItemModel(
             imageRes = R.drawable.img_category_boy,
 
             title = "پسرانه"
         ),
-        CategoryCardItem(
+        CategoryItemModel(
             imageRes = R.drawable.img_category_baby,
 
             title = "نوزادی"
         ),
-        CategoryCardItem(
+        CategoryItemModel(
             imageRes = R.drawable.img_category_shoes,
 
             title = "کفش"
         ),
 
 
-
-
-
-    )
+        )
 
     Box(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxSize(),
 
 
@@ -166,11 +151,11 @@ fun HomeScreen(
                     Column(
                         modifier = Modifier
                             .fillMaxSize()
-                            .padding(horizontal = 7.dp)
+                            .padding(horizontal = 9.dp)
                     ) {
                         SpacerHeight(20)
                         CustomBannerSlider(
-                            items = bannerSliderModels,
+                            banners = banners,
 
                             onItemClick = { title -> }
                         )
@@ -206,7 +191,7 @@ fun HomeScreen(
                                     painter = painterResource(R.drawable.ic_search),
                                     contentDescription = "search",
                                     tint = Orange2,
-                                    modifier= Modifier
+                                    modifier = Modifier
                                         .size(20.dp)
                                         .offset(x = (-10).dp)
 
@@ -217,7 +202,8 @@ fun HomeScreen(
                         SpacerHeight(20)
 
                         CustomCategorySlider(
-                  categories = categoryCardItems,
+                            categories = categories,
+
                             onCategoryClick = {
 
                             }
@@ -243,14 +229,7 @@ fun HomeScreen(
                 }
 
 
-
-
-
-
-
-
             }
-
 
 
         )
