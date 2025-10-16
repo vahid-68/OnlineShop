@@ -209,6 +209,23 @@ discount = true
                             }
 
                         )
+SpacerHeight(30)
+                        Text(
+                            text = "پرفروش ترین ها",
+
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(end = 22.dp),
+
+                            textAlign = TextAlign.Right,
+
+                            color = Color.Black,
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.ExtraBold,
+
+                            style = TextStyle(textDirection = TextDirection.Rtl)
+
+                        )
 
                     }
                     DropdownCardMenu(
