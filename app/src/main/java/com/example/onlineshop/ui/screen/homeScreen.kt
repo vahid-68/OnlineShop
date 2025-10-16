@@ -214,8 +214,82 @@ SpacerHeight(30)
                             text = "پرفروش ترین ها",
 
                             modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(end = 22.dp),
+                                .fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween
+                        ) {
+
+                            Row(
+                                modifier = Modifier
+                                    .width(110.dp)
+
+                                    .padding(top = 9.dp, start = 5.dp)
+                                    .clickable{
+                                    },
+
+                                horizontalArrangement = Arrangement.SpaceEvenly,
+                                verticalAlignment = Alignment.Bottom
+
+
+
+                            ) {
+
+                                Row(
+                                    horizontalArrangement = Arrangement.SpaceBetween,
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    modifier = Modifier
+
+
+                                ) {
+
+                                    Icon(
+                                        painter = painterResource(R.drawable.ic_arrow_left),
+                                        contentDescription = "arrow_left",
+                                        tint = Orange2,
+                                        modifier = Modifier
+                                            .size(21.dp)
+                                            .offset(x = (7).dp,y=(-2).dp)
+
+                                    )
+                                    Icon(
+                                        painter = painterResource(R.drawable.ic_long_dash),
+                                        contentDescription = "arrow_left",
+                                        tint = Orange2,
+                                        modifier = Modifier
+                                            .size(11.dp)
+                                            .offset(x = (-6).dp,y=(-2).dp)
+
+                                    )
+
+                                    Icon(
+                                        painter = painterResource(R.drawable.ic_short_dash),
+                                        contentDescription = "arrow_left",
+                                        tint = Orange2,
+                                        modifier = Modifier
+                                            .size(5.dp)
+                                            .offset(x = (-4).dp,y=(-2).dp)
+
+                                    )
+
+
+                                }
+                                Text(
+                                    text = "مشاهده همه",
+                                    color = Color.Black,
+                                    fontSize = 13.sp,
+
+
+
+                                )
+
+                            }
+
+
+                            Text(
+                                text = "پرفروش ترین ها",
+
+                                modifier = Modifier
+
+                                    .padding(end = 22.dp),
 
                             textAlign = TextAlign.Right,
 
