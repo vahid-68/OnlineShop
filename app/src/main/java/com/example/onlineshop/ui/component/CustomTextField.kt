@@ -17,6 +17,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextDirection
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.onlineshop.ui.theme.GrayLight
@@ -31,7 +32,9 @@ fun CustomTextField(
     placeholder: String,
     trailingIcon:@Composable (() -> Unit)?=null,
 
-    type: KeyboardType = KeyboardType.Text
+    type: KeyboardType = KeyboardType.Text,
+    modifier: Modifier= Modifier,
+    horizontalPadding: Dp =16.dp
 
 
 
@@ -43,10 +46,10 @@ fun CustomTextField(
 
 
         shape = RoundedCornerShape(11.dp),
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .height(50.dp)
-            .padding(horizontal = 16.dp),
+            .padding(horizontal =horizontalPadding),
         colors = TextFieldDefaults.colors(
             focusedContainerColor = White,
             unfocusedContainerColor = White,

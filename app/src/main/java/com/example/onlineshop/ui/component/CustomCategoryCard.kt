@@ -17,7 +17,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -37,7 +36,8 @@ fun CustomCategoryCard(
     val cardWidth= item.cardWidth
     val cardHeight= item.cardHeight
     val imageSize=item.imageSize?:45.dp
-    val titleSize=item.titleSize?:12.sp
+    val titleSize: TextUnit=item.titleSize?:12.sp
+
 
 
 
@@ -74,7 +74,7 @@ fun CustomCategoryCard(
                 item.title?.let {
                     Text(
                         text = it,
-                        fontSize = titleSize,
+                        fontSize =titleSize,
                         fontWeight = FontWeight.Bold,
                         textAlign = TextAlign.Center
 

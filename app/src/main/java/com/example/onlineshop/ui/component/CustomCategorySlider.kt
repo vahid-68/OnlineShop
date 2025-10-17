@@ -17,8 +17,9 @@ fun CustomCategorySlider(
 ) {
 
     LazyRow(
-        contentPadding = PaddingValues(horizontal = 16.dp),
-        horizontalArrangement = Arrangement.spacedBy(12.dp)
+        contentPadding = PaddingValues(horizontal = 8.dp),
+        horizontalArrangement = Arrangement.spacedBy(12.dp),
+        reverseLayout = true
     ) {
         items(categories) { item ->
             CustomCategoryCard(

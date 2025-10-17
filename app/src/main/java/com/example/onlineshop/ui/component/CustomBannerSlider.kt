@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -88,7 +89,8 @@ fun CustomBannerSlider(
 
             modifier = Modifier
                 .fillMaxWidth()
-                .height(190.dp)
+                .height(190.dp),
+            reverseLayout = true
 
 
         ) { page ->
@@ -108,15 +110,18 @@ fun CustomBannerSlider(
                     modifier= Modifier
                         .align(Alignment.BottomCenter)
                         .padding(bottom = 18.dp),
-                    horizontalArrangement = Arrangement.Center
+                    horizontalArrangement = Arrangement.End
                 ){
                     banners.forEachIndexed { i,_  ->
+                        val currentIndex=pagerState.currentPage % banners.size
 
-                        val isSelected=(pagerState.currentPage % banners.size)==i
+                        val isSelected=(currentIndex==banners.size -1 -i)
+
 
                         Box(
                             modifier = Modifier
                                 .padding(horizontal = 3.dp)
+
                                 .size(
                                     if (isSelected)7.dp else 6.dp
                                 )

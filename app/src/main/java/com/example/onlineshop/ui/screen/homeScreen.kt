@@ -1,12 +1,18 @@
 package com.example.onlineshop.ui.screen
 
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -15,6 +21,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -24,25 +31,19 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.onlineshop.R
 import com.example.onlineshop.data.model.BannerItemModel
+import com.example.onlineshop.data.model.CategoryItemModel
 import com.example.onlineshop.ui.component.BackgroundApp
 import com.example.onlineshop.ui.component.CustomBannerSlider
-import com.example.onlineshop.ui.component.DropdownCardMenu
-
-import com.example.onlineshop.ui.component.HeaderApp
-import com.example.onlineshop.R
-import com.example.onlineshop.data.model.CategoryItemModel
 import com.example.onlineshop.ui.component.CustomCategorySlider
 import com.example.onlineshop.ui.component.CustomTextField
+import com.example.onlineshop.ui.component.DropdownCardMenu
+import com.example.onlineshop.ui.component.HeaderApp
 import com.example.onlineshop.ui.component.SpacerHeight
-import com.example.onlineshop.ui.theme.Green1
-import com.example.onlineshop.ui.theme.Green2
-import com.example.onlineshop.ui.theme.Green3
-import com.example.onlineshop.ui.theme.Green4
 import com.example.onlineshop.ui.theme.LightOrange
 import com.example.onlineshop.ui.theme.Orange
 import com.example.onlineshop.ui.theme.Orange2
-import com.example.onlineshop.ui.theme.Yellow
 
 @Composable
 fun HomeScreen(
@@ -69,9 +70,9 @@ fun HomeScreen(
             description = "",
             text = "تولید و عرضه انواع کفش های اسپرت در همه سایز ها",
 
-            
+
             bgGradient = listOf(Orange2, LightOrange),
-            circleGradient = listOf(Orange,LightOrange)
+            circleGradient = listOf(Orange, LightOrange)
         ),
         BannerItemModel(
             R.drawable.banner_product2,
@@ -79,16 +80,17 @@ fun HomeScreen(
             description = "",
             text = "تولید و عرضه انواع کفش های اسپرت در همه سایز ها",
 
-discount = true
-            )
+            discount = true
+        )
     )
 
     val categories = listOf(
         CategoryItemModel(
             imageRes = R.drawable.img_category_man,
 
-            title = "مردانه"
-        ),
+            title = "مردانه",
+
+            ),
         CategoryItemModel(
             imageRes = R.drawable.img_category_woman,
 
@@ -147,11 +149,12 @@ discount = true
                         .padding(innerPadding)
                 ) {
 
-
+val scrollState=rememberScrollState()
                     Column(
                         modifier = Modifier
                             .fillMaxSize()
                             .padding(horizontal = 9.dp)
+                            .verticalScroll(scrollState)
                     ) {
                         SpacerHeight(20)
                         CustomBannerSlider(
@@ -167,7 +170,7 @@ discount = true
 
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(end = 22.dp),
+                                .padding(end = 8.dp),
 
                             textAlign = TextAlign.Right,
 
@@ -182,10 +185,12 @@ discount = true
 
 
                         CustomTextField(
+
                             stateSearch,
                             { stateSearch = it },
                             TextDirection.Rtl,
                             "  هرچی میخوای جستجوکن ...",
+                            horizontalPadding = 8.dp,
                             trailingIcon = {
                                 Icon(
                                     painter = painterResource(R.drawable.ic_search),
@@ -209,10 +214,9 @@ discount = true
                             }
 
                         )
-SpacerHeight(30)
-                        Text(
-                            text = "پرفروش ترین ها",
+                        SpacerHeight(40)
 
+                        Row(
                             modifier = Modifier
                                 .fillMaxWidth(),
                             horizontalArrangement = Arrangement.SpaceBetween
@@ -289,17 +293,20 @@ SpacerHeight(30)
 
                                 modifier = Modifier
 
-                                    .padding(end = 22.dp),
+                                    .padding(end = 8.dp, top = 4.dp),
 
-                            textAlign = TextAlign.Right,
+                                textAlign = TextAlign.Right,
 
-                            color = Color.Black,
-                            fontSize = 20.sp,
-                            fontWeight = FontWeight.ExtraBold,
+                                color = Color.Black,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight.ExtraBold,
 
-                            style = TextStyle(textDirection = TextDirection.Rtl)
+                                style = TextStyle(textDirection = TextDirection.Rtl)
 
-                        )
+                            )
+
+
+                        }
 
                     }
                     DropdownCardMenu(
