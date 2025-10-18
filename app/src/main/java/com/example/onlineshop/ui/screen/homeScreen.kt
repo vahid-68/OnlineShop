@@ -34,9 +34,12 @@ import androidx.compose.ui.unit.sp
 import com.example.onlineshop.R
 import com.example.onlineshop.data.model.BannerItemModel
 import com.example.onlineshop.data.model.CategoryItemModel
+import com.example.onlineshop.data.model.ProductItemModel
 import com.example.onlineshop.ui.component.BackgroundApp
 import com.example.onlineshop.ui.component.CustomBannerSlider
 import com.example.onlineshop.ui.component.CustomCategorySlider
+import com.example.onlineshop.ui.component.CustomProductCard
+import com.example.onlineshop.ui.component.CustomProductSlider
 import com.example.onlineshop.ui.component.CustomTextField
 import com.example.onlineshop.ui.component.DropdownCardMenu
 import com.example.onlineshop.ui.component.HeaderApp
@@ -120,6 +123,71 @@ fun HomeScreen(
 
         )
 
+
+    val products = listOf(
+        ProductItemModel(
+
+                imageRes = R.drawable.img_product1,
+                title = "مانتو بافت زنانه اچ اندام",
+                price = "1،550،000 ",
+                priceWithDiscount = "2،000،000 ",
+                description = "jjj",
+            discount = true
+
+
+
+                ),
+        ProductItemModel(
+
+            imageRes = R.drawable.img_product3,
+            title = "ست سویشرت و شلوار مردانه",
+            price = "1،550،000 ",
+            priceWithDiscount = "2،000،000 ",
+            description = "jjj",
+            imageSize = 135.dp,
+            titleFontSize = 10.sp,
+            discount = true
+
+
+
+
+            ),
+        ProductItemModel(
+
+            imageRes = R.drawable.img_product2,
+            title = "مانتو زنانه پروت",
+            price = "5،760،000 ",
+            priceWithDiscount = "6،300،000 ",
+            description = "jjj",
+            discount = true
+
+
+
+
+
+
+
+            ),
+
+        ProductItemModel(
+
+            imageRes = R.drawable.img_product1,
+            title = "مانتو بافت زنانه اچ اندام",
+            price = "1،550،000 ",
+            priceWithDiscount = "2،000،000 ",
+            description = "jjj",
+
+
+
+            ),
+
+
+
+        )
+
+
+
+
     Box(
         modifier = Modifier
             .fillMaxSize(),
@@ -178,7 +246,10 @@ val scrollState=rememberScrollState()
                             fontSize = 18.sp,
                             fontWeight = FontWeight.ExtraBold,
 
-                            style = TextStyle(textDirection = TextDirection.Rtl)
+                            style = TextStyle(
+                                textDirection = TextDirection.Rtl,
+                                letterSpacing = (-0.5).sp
+                            )
 
                         )
                         SpacerHeight(20)
@@ -301,12 +372,25 @@ val scrollState=rememberScrollState()
                                 fontSize = 20.sp,
                                 fontWeight = FontWeight.ExtraBold,
 
-                                style = TextStyle(textDirection = TextDirection.Rtl)
+                                style = TextStyle(
+                                    textDirection = TextDirection.Rtl,
+                                    letterSpacing = (-0.5).sp
+                                )
 
                             )
 
 
                         }
+
+                        SpacerHeight(10)
+                        CustomProductSlider(
+                          products=products,
+                            onProductClick = {
+
+                            }
+                        )
+
+                        SpacerHeight(30)
 
                     }
                     DropdownCardMenu(

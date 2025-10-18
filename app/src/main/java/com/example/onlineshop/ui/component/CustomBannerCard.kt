@@ -100,7 +100,6 @@ fun CustomBannerCard(
                         modifier = Modifier
 
 
-
                             .width(150.dp),
 
                         verticalArrangement = Arrangement.Center,
@@ -177,38 +176,18 @@ fun CustomBannerCard(
         }
 
         if (item.discount == true) {
-            Box(
+            CustomDiscoundBadge(
+                text = "تخفیف ویژه",
+                isPercentType = false,
+                halfOutsides = true,
                 modifier = Modifier
-
-
-                    .offset(x = (25).dp, y = (-10).dp)
-
-
-                    .background(
-                        brush = Brush.linearGradient(
-                            colors = listOf(
-                                LightOrange, Orange2
-                            ),
-
-                            ), shape = RoundedCornerShape(30.dp)
-                    )
-
+                    .width(65.dp)
                     .height(22.dp)
-                    .width(70.dp),
 
-
-                contentAlignment = Alignment.Center
-
-            ) {
-                Text(
-                    text = "تخفیف ویژه",
-                    textAlign = TextAlign.Center,
-                    color = White,
-                    fontSize = 12.sp,
-                    fontWeight = FontWeight.Bold,
-                )
-            }
+            )
         }
+
+
     }
 
 

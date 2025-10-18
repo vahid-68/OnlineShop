@@ -33,3 +33,7 @@ val Green2=Color(0xFF597D3C)
 
 val Green3=Color(0xFF7EA055)
 val Green4=Color(0xFF5A7E3D)
+
+val BgProduct=Color(0xFFEBEBEB)
+
+
