@@ -33,12 +33,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.onlineshop.R
 import com.example.onlineshop.data.model.BannerItemModel
+import com.example.onlineshop.data.model.BottomNavItem
 import com.example.onlineshop.data.model.CategoryItemModel
 import com.example.onlineshop.data.model.ProductItemModel
 import com.example.onlineshop.ui.component.BackgroundApp
 import com.example.onlineshop.ui.component.CustomBannerSlider
+import com.example.onlineshop.ui.component.CustomBottomBar
 import com.example.onlineshop.ui.component.CustomCategorySlider
-import com.example.onlineshop.ui.component.CustomProductCard
 import com.example.onlineshop.ui.component.CustomProductSlider
 import com.example.onlineshop.ui.component.CustomTextField
 import com.example.onlineshop.ui.component.DropdownCardMenu
@@ -185,8 +186,36 @@ fun HomeScreen(
 
         )
 
+val bottomBarItems=listOf(
+    BottomNavItem(
+        title = "پروفایل من",
+        iconRes = R.drawable.ic_my_profile,
+        route = "profile"
 
+    ),
+    BottomNavItem(
+        title = "سبد خرید",
+        iconRes = R.drawable.ic_shopping_bag,
+        route = "cart"
 
+    ),
+
+    BottomNavItem(
+        title = "دسته بندی",
+        iconRes = R.drawable.ic_category,
+        route = "category"
+
+    ),
+
+    BottomNavItem(
+        title = "خانه",
+        iconRes = R.drawable.ic_home,
+        route = "home"
+
+    )
+
+)
+var selectedItem by remember { mutableStateOf("home") }
 
     Box(
         modifier = Modifier
@@ -411,9 +440,16 @@ val scrollState=rememberScrollState()
                 }
 
 
+            },
+            bottomBar = {
+                CustomBottomBar(
+items = bottomBarItems,
+                    selectedItem = selectedItem,
+                    onItemClick = {selectedItem=it}
+
+
+                )
             }
-
-
         )
     }
 

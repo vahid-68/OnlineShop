@@ -46,8 +46,10 @@ fun CustomDiscoundBadge(
         Text(
             text=if (isPercentType) "$text%" else text,
             color = White,
-            fontSize = 11.sp,
+            fontSize = 12.sp,
             fontWeight = FontWeight.Bold,
+            modifier = Modifier
+                .padding(start = if (isPercentType) 6.dp else 0.dp)
 
 
 

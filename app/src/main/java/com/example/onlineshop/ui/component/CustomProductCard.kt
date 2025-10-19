@@ -247,8 +247,9 @@ fun CustomProductCard(
                             isPercentType = true,
                             halfOutsides = false,
                             modifier = Modifier
-                                .width(100.dp)
 
+                                .width(100.dp)
+                                .height(25.dp)
                                 .offset(x = (150).dp, y = (-150).dp)
 
 
