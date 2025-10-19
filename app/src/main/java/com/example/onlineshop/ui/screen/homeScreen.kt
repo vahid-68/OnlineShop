@@ -18,6 +18,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -192,6 +193,7 @@ val bottomBarItems=listOf(
         iconRes = R.drawable.ic_my_profile,
         route = "profile"
 
+
     ),
     BottomNavItem(
         title = "سبد خرید",
@@ -215,7 +217,7 @@ val bottomBarItems=listOf(
     )
 
 )
-var selectedItem by remember { mutableStateOf("home") }
+var selectedIndex by remember { mutableIntStateOf(3) }
 
     Box(
         modifier = Modifier
@@ -326,9 +328,8 @@ val scrollState=rememberScrollState()
                                 modifier = Modifier
                                     .width(110.dp)
 
-                                    .padding(top = 9.dp, start = 5.dp)
-                                    .clickable{
-                                    },
+                                    .padding(top = 9.dp, start = 5.dp),
+
 
                                 horizontalArrangement = Arrangement.SpaceEvenly,
                                 verticalAlignment = Alignment.Bottom
@@ -341,6 +342,8 @@ val scrollState=rememberScrollState()
                                     horizontalArrangement = Arrangement.SpaceBetween,
                                     verticalAlignment = Alignment.CenterVertically,
                                     modifier = Modifier
+                                        .clickable{
+                                        },
 
 
                                 ) {
@@ -444,8 +447,8 @@ val scrollState=rememberScrollState()
             bottomBar = {
                 CustomBottomBar(
 items = bottomBarItems,
-                    selectedItem = selectedItem,
-                    onItemClick = {selectedItem=it}
+                   selectedIndex = selectedIndex,
+                    onItemClick = {selectedIndex=it}
 
 
                 )

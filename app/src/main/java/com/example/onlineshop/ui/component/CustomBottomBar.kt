@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
@@ -21,12 +22,18 @@ import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.modifier.modifierLocalOf
 import androidx.compose.ui.res.painterResource
@@ -42,77 +49,94 @@ import com.example.onlineshop.ui.theme.White
 
 fun CustomBottomBar(
     items: List<BottomNavItem>,
-    selectedItem: String,
-    onItemClick: (String) -> Unit,
+    selectedIndex: Int,
+    onItemClick: (Int) -> Unit,
 ) {
 
 
-
-    Row(
+    NavigationBar(
+        containerColor = White,
+        tonalElevation = 4.dp,
         modifier = Modifier
             .fillMaxWidth()
-            .background(White)
-            .padding(vertical = 4.dp, horizontal = 8.dp),
-        horizontalArrangement = Arrangement.SpaceBetween
+
+            .height(75.dp)
+
     ) {
-        items.forEach { item ->
-            val isSelected = item.title == selectedItem
+        Row(
+            horizontalArrangement = Arrangement.SpaceBetween,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 12.dp)
 
-            Box(
-                modifier = Modifier
-                    .weight(1f)
-                    .clickable { onItemClick(item.title) },
-                contentAlignment = Alignment.Center
-            ) {
+        ) {
+            items.forEachIndexed { index, item ->
 
-                Column(
-                    modifier = Modifier,
+                NavigationBarItem(
+                    selected = selectedIndex == index,
+                    onClick = { onItemClick(index) },
 
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    if (isSelected) {
+
+                    icon = {
                         Box(
                             modifier = Modifier
-                                .offset(y = (-4).dp)
 
-                            .align(Alignment.CenterHorizontally)
-                                .width(24.dp)
-                                .height(3.dp)
-                                .clip(RoundedCornerShape(2.dp))
-                                .background(Orange2)
+
+                                .padding(top = 4.dp)
+
+
+                        ) {
+
+                            if (selectedIndex == index) {
+                                Box(
+                                    modifier = Modifier
+                                        .offset(y = (-12).dp)
+
+                                        .align(Alignment.TopCenter)
+                                        .width(28.dp)
+                                        .height(4.dp)
+
+                                        .background(Orange2, shape = RoundedCornerShape(3.dp))
+
+                                )
+                            }
+
+
+
+
+
+                            Image(
+                                painter = painterResource(id = item.iconRes),
+                                contentDescription = item.title,
+                                modifier = Modifier
+                                    .size(25.dp)
+                                    .align(Alignment.Center)
+
+                            )
+                        }
+                    },
+                    label = {
+                        Text(
+                            text = item.title,
+                            fontSize = 14.sp,
+                            color = if (selectedIndex == index) Orange2 else GrayBlack
 
                         )
-                    } else {
-                        SpacerHeight(3)
-                    }
-SpacerHeight(8)
+                    },
 
-                    Image(
-                        painter = painterResource(id = item.iconRes),
-                        contentDescription = item.title,
-                        modifier = Modifier
-                            .size(25.dp),
+
+                    colors = NavigationBarItemDefaults.colors(
+                        indicatorColor = Color.Transparent,
+
 
                         )
-                    SpacerHeight(2)
-                    Text(
-
-                        text = item.title,
-                        fontSize = 12.sp,
-                        color = if (isSelected) Orange2 else GrayBlack
-
-
-                    )
-
-
-                }
+                )
 
             }
-
         }
     }
 
-
-
 }
+
+
 
