@@ -1,5 +1,6 @@
 package com.example.onlineshop.ui.component
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -25,6 +26,7 @@ import com.example.onlineshop.ui.theme.White
 import com.example.onlineshop.ui.utils.responsiveFontSize
 
 
+@SuppressLint("SuspiciousIndentation")
 @Composable
 fun CustomCategoryCard(
     item: CategoryItemModel,
@@ -75,7 +77,7 @@ fun CustomCategoryCard(
                 item.title?.let {
                     Text(
                         text = it,
-                        fontSize = responsiveFontSize(14.sp,12.sp,22.sp, xlarge = 24.sp),
+                        fontSize = responsiveFontSize(14.sp,12.sp,14.sp, xlarge = 14.sp),
                         fontWeight = FontWeight.Bold,
                         textAlign = TextAlign.Center
 

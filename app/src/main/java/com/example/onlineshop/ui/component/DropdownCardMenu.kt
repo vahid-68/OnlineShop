@@ -1,5 +1,6 @@
 package com.example.onlineshop.ui.component
 
+import android.annotation.SuppressLint
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.ExperimentalAnimatableApi
 import androidx.compose.animation.core.tween
@@ -15,8 +16,10 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
@@ -27,6 +30,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -36,11 +40,13 @@ import com.example.onlineshop.ui.theme.Kerem
 import com.example.onlineshop.ui.theme.Orange
 import com.example.onlineshop.ui.theme.White
 
+@SuppressLint("ConfigurationScreenWidthHeight")
 @OptIn(ExperimentalAnimatableApi::class)
 @Composable
 fun DropdownCardMenu(
     menuExpanded: Boolean,
     onItemClick: (String) -> Unit,
+    modifier: Modifier = Modifier
 
 ) {
 
@@ -67,6 +73,7 @@ fun DropdownCardMenu(
 
             Column(
                 modifier = Modifier
+
                     .fillMaxWidth()
                     .background(White)
                     .padding(16.dp),
@@ -118,6 +125,8 @@ fun DropdownCardMenu(
 
                 Column(
                     modifier = Modifier.fillMaxWidth(),
+
+
                     horizontalAlignment = Alignment.End
                 ) {
                     DropdownMenuItem(imageRes = R.drawable.ic_user_octagon, text = "پروفایل کاربری",

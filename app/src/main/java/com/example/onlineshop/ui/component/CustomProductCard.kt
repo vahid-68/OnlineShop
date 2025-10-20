@@ -128,7 +128,7 @@ fun CustomProductCard(
                                 modifier = Modifier
                                     .padding(top = 9.dp),
                                 text = title,
-                                fontSize = responsiveFontSize(14.sp,12.sp,14.sp, xlarge = 16.sp),
+                                fontSize = responsiveFontSize(14.sp,12.sp,12.sp, xlarge = 12.sp),
                                 fontWeight = FontWeight.Bold,
                                 style = TextStyle(letterSpacing = (-0.5).sp)
                             )
@@ -154,7 +154,7 @@ fun CustomProductCard(
                                     Text(
 
                                         text = price,
-                                        fontSize = responsiveFontSize(12.sp,10.sp,13.sp, xlarge = 14.sp),
+                                        fontSize = responsiveFontSize(12.sp,10.sp,10.sp, xlarge = 10.sp),
                                         fontWeight = FontWeight.Bold,
                                         style = MaterialTheme.typography.labelSmall
 
@@ -166,7 +166,7 @@ fun CustomProductCard(
                                 ) {
                                     Text(
                                         text = priceWithDiscount,
-                                        fontSize = responsiveFontSize(11.sp,9.sp,12.sp, xlarge = 14.sp),
+                                        fontSize = responsiveFontSize(11.sp,9.sp,9.sp, xlarge = 9.sp),
                                         style = MaterialTheme.typography.labelSmall,
                                         color = GrayBlack,
 

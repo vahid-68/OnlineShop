@@ -16,7 +16,7 @@ data class CategoryItemModel(
     val cardHeight: Dp=83.dp,
     val cardWidth: Dp=70.dp,
 val imageSize: Dp?=null,
-    val titleSize: TextUnit?=null,
+
 
 
 

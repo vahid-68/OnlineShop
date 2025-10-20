@@ -123,7 +123,7 @@ fun CustomBottomBar(
                     label = {
                         Text(
                             text = item.title,
-                            fontSize = responsiveFontSize(14.sp,12.sp,14.sp, xlarge = 16.sp),
+                            fontSize = responsiveFontSize(14.sp,12.sp,14.sp, xlarge = 14.sp),
                             color = if (selectedIndex == index) Orange2 else GrayBlack
 
                         )

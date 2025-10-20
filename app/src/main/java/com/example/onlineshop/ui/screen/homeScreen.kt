@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -279,7 +280,7 @@ val scrollState=rememberScrollState()
                             textAlign = TextAlign.Right,
 
                             color = Color.Black,
-                            fontSize = responsiveFontSize(19.sp,16.sp,20.sp, xlarge = 22.sp),
+                            fontSize = responsiveFontSize(19.sp,16.sp,19.sp, xlarge = 19.sp),
                             fontWeight = FontWeight.ExtraBold,
 
                             style = TextStyle(
@@ -387,7 +388,7 @@ val scrollState=rememberScrollState()
                                 Text(
                                     text = "مشاهده همه",
                                     color = Color.Black,
-                                    fontSize = responsiveFontSize(13.sp,12.sp,14.sp, xlarge = 16.sp),
+                                    fontSize = responsiveFontSize(13.sp,12.sp,13.sp, xlarge = 13.sp),
                                     fontWeight = FontWeight.Bold
 
 
@@ -407,7 +408,7 @@ val scrollState=rememberScrollState()
                                 textAlign = TextAlign.Right,
 
                                 color = Color.Black,
-                                fontSize = responsiveFontSize(22.sp,18.sp,24.sp, xlarge = 28.sp),
+                                fontSize = responsiveFontSize(22.sp,18.sp,22.sp, xlarge = 22.sp),
                                 fontWeight = FontWeight.ExtraBold,
 
                                 style = TextStyle(
@@ -432,6 +433,7 @@ val scrollState=rememberScrollState()
 
                     }
                     DropdownCardMenu(
+
                         menuExpanded = menuExpanded,
                         onItemClick = { item ->
                             menuExpanded = false

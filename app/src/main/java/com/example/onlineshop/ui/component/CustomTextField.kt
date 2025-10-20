@@ -66,7 +66,7 @@ fun CustomTextField(
                 modifier = Modifier
                     .fillMaxWidth(),
                 text = placeholder,
-                fontSize = responsiveFontSize(12.sp,10.sp,12.sp, xlarge = 14.sp),
+                fontSize = responsiveFontSize(12.sp,10.sp,12.sp, xlarge = 12.sp),
                 color = GrayLight,
                 style = TextStyle(
                     textDirection = direction

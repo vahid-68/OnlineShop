@@ -47,7 +47,7 @@ fun CustomDiscoundBadge(
         Text(
             text=if (isPercentType) "$text%" else text,
             color = White,
-            fontSize = responsiveFontSize(12.sp,10.sp,12.sp, xlarge = 14.sp),
+            fontSize = responsiveFontSize(12.sp,10.sp,12.sp, xlarge = 12.sp),
             textAlign = TextAlign.Center,
             fontWeight = FontWeight.Bold,
             modifier = Modifier
