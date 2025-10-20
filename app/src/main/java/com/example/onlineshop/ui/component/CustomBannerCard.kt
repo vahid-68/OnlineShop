@@ -40,6 +40,7 @@ import com.example.onlineshop.ui.theme.Green4
 import com.example.onlineshop.ui.theme.LightOrange
 import com.example.onlineshop.ui.theme.Orange2
 import com.example.onlineshop.ui.theme.White
+import com.example.onlineshop.ui.utils.responsiveFontSize
 
 @Composable
 fun CustomBannerCard(
@@ -114,7 +115,7 @@ fun CustomBannerCard(
 
                                 text = it,
                                 color = Color.White,
-                                fontSize = 18.sp,
+                                fontSize = responsiveFontSize(19.sp,17.sp,20.sp, xlarge = 22.sp),
                                 fontWeight = FontWeight.ExtraBold,
                                 textAlign = TextAlign.Center,
                                 style = TextStyle(textDirection = TextDirection.Rtl)
@@ -130,7 +131,8 @@ fun CustomBannerCard(
                                     .padding(top = 5.dp),
                                 text = it,
                                 color = Color.White,
-                                fontSize = 16.sp,
+                                fontSize = responsiveFontSize(15.sp,12.sp,16.sp, xlarge = 18.sp),
+                                fontWeight = FontWeight.Bold,
                                 textAlign = TextAlign.Center,
                                 lineHeight = 19.sp
 

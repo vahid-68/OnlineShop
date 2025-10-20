@@ -3,6 +3,9 @@ package com.example.onlineshop.ui.component
 import android.R
 import android.R.attr.text
 import android.graphics.drawable.Icon
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -40,10 +43,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.unit.times
 import com.example.onlineshop.data.model.BottomNavItem
 import com.example.onlineshop.ui.theme.GrayBlack
 import com.example.onlineshop.ui.theme.Orange2
 import com.example.onlineshop.ui.theme.White
+import com.example.onlineshop.ui.utils.responsiveFontSize
 
 @Composable
 
@@ -90,7 +95,7 @@ fun CustomBottomBar(
                             if (selectedIndex == index) {
                                 Box(
                                     modifier = Modifier
-                                        .offset(y = (-12).dp)
+                                        .offset(y = (-14).dp)
 
                                         .align(Alignment.TopCenter)
                                         .width(28.dp)
@@ -118,7 +123,7 @@ fun CustomBottomBar(
                     label = {
                         Text(
                             text = item.title,
-                            fontSize = 14.sp,
+                            fontSize = responsiveFontSize(14.sp,12.sp,14.sp, xlarge = 16.sp),
                             color = if (selectedIndex == index) Orange2 else GrayBlack
 
                         )

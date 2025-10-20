@@ -21,6 +21,7 @@ import com.example.onlineshop.ui.theme.LightOrange
 import com.example.onlineshop.ui.theme.Orange
 import com.example.onlineshop.ui.theme.Orange2
 import com.example.onlineshop.ui.theme.White
+import com.example.onlineshop.ui.utils.responsiveFontSize
 
 @Composable
 fun CustomDiscoundBadge(
@@ -46,7 +47,8 @@ fun CustomDiscoundBadge(
         Text(
             text=if (isPercentType) "$text%" else text,
             color = White,
-            fontSize = 12.sp,
+            fontSize = responsiveFontSize(12.sp,10.sp,12.sp, xlarge = 14.sp),
+            textAlign = TextAlign.Center,
             fontWeight = FontWeight.Bold,
             modifier = Modifier
                 .padding(start = if (isPercentType) 6.dp else 0.dp)

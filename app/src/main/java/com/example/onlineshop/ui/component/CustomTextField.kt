@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.sp
 import com.example.onlineshop.ui.theme.GrayLight
 import com.example.onlineshop.ui.theme.White
 import com.example.onlineshop.R
+import com.example.onlineshop.ui.utils.responsiveFontSize
 
 @Composable
 fun CustomTextField(
@@ -65,7 +66,7 @@ fun CustomTextField(
                 modifier = Modifier
                     .fillMaxWidth(),
                 text = placeholder,
-                fontSize = 12.sp,
+                fontSize = responsiveFontSize(12.sp,10.sp,12.sp, xlarge = 14.sp),
                 color = GrayLight,
                 style = TextStyle(
                     textDirection = direction

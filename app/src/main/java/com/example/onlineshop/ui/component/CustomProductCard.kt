@@ -1,14 +1,9 @@
 package com.example.onlineshop.ui.component
 
-import android.R.attr.textDirection
-import androidx.compose.animation.core.FastOutSlowInEasing
-import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.tween
+import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.Indication
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -21,40 +16,24 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.CutCornerShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.clipToBounds
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.layout.ModifierLocalBeyondBoundsLayout
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.LineHeightStyle
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextDecoration
-import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.zIndex
 import com.example.onlineshop.data.model.ProductItemModel
 import com.example.onlineshop.ui.theme.BgProduct
 import com.example.onlineshop.ui.theme.GrayBlack
@@ -62,10 +41,11 @@ import com.example.onlineshop.ui.theme.White
 import com.example.onlineshop.R
 import com.example.onlineshop.ui.theme.LightOrange
 import com.example.onlineshop.ui.theme.Orange2
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+
+import com.example.onlineshop.ui.utils.responsiveFontSize
 
 
+@SuppressLint("ConfigurationScreenWidthHeight")
 @Composable
 fun CustomProductCard(
     item: ProductItemModel,
@@ -83,10 +63,9 @@ fun CustomProductCard(
     val cardWidth = item.cardWidth
     val cardHeight = item.cardHeight
     val imageSize = item.imageSize ?: 80.dp
-    val titleSize: TextUnit = item.titleFontSize ?: 13.sp
-    val priceSize: TextUnit = item.priceFontSize ?: 13.sp
-    val priceWithDiscountSize: TextUnit = item.priceWithDiscountFontSize ?: 11.sp
+
     val discount: Boolean = item.discount ?: false
+
 
 
 
@@ -149,7 +128,7 @@ fun CustomProductCard(
                                 modifier = Modifier
                                     .padding(top = 9.dp),
                                 text = title,
-                                fontSize = titleSize,
+                                fontSize = responsiveFontSize(14.sp,12.sp,14.sp, xlarge = 16.sp),
                                 fontWeight = FontWeight.Bold,
                                 style = TextStyle(letterSpacing = (-0.5).sp)
                             )
@@ -161,21 +140,23 @@ fun CustomProductCard(
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
                                 Row(
-                                    modifier = Modifier,
+                                  horizontalArrangement = Arrangement.Center,
+                                    verticalAlignment = Alignment.CenterVertically
 
                                     ) {
                                     Text(
 
                                         text = "تومان",
-                                        fontSize = 10.sp,
+                                        fontSize = 11.sp,
                                         color = GrayBlack
 
                                     )
                                     Text(
 
                                         text = price,
-                                        fontSize = priceSize,
-                                        fontWeight = FontWeight.Bold
+                                        fontSize = responsiveFontSize(12.sp,10.sp,13.sp, xlarge = 14.sp),
+                                        fontWeight = FontWeight.Bold,
+                                        style = MaterialTheme.typography.labelSmall
 
                                     )
                                 }
@@ -185,7 +166,8 @@ fun CustomProductCard(
                                 ) {
                                     Text(
                                         text = priceWithDiscount,
-                                        fontSize = priceWithDiscountSize,
+                                        fontSize = responsiveFontSize(11.sp,9.sp,12.sp, xlarge = 14.sp),
+                                        style = MaterialTheme.typography.labelSmall,
                                         color = GrayBlack,
 
 
@@ -195,7 +177,7 @@ fun CustomProductCard(
                                         contentDescription = "lineDiscount",
                                         tint = GrayBlack,
                                         modifier = Modifier
-                                            .size(47.dp)
+                                            .size(40.dp)
                                     )
                                 }
 

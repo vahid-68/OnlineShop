@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.onlineshop.data.model.CategoryItemModel
 import com.example.onlineshop.ui.theme.White
+import com.example.onlineshop.ui.utils.responsiveFontSize
 
 
 @Composable
@@ -36,7 +37,7 @@ fun CustomCategoryCard(
     val cardWidth= item.cardWidth
     val cardHeight= item.cardHeight
     val imageSize=item.imageSize?:45.dp
-    val titleSize: TextUnit=item.titleSize?:12.sp
+
 
 
 
@@ -74,7 +75,7 @@ fun CustomCategoryCard(
                 item.title?.let {
                     Text(
                         text = it,
-                        fontSize =titleSize,
+                        fontSize = responsiveFontSize(14.sp,12.sp,22.sp, xlarge = 24.sp),
                         fontWeight = FontWeight.Bold,
                         textAlign = TextAlign.Center
 

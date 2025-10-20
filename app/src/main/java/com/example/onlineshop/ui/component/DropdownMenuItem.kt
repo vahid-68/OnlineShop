@@ -14,6 +14,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.onlineshop.ui.utils.responsiveFontSize
 
 @Composable
 fun DropdownMenuItem(imageRes: Int, text: String, onClick: () -> Unit = {}) {
@@ -27,7 +28,7 @@ fun DropdownMenuItem(imageRes: Int, text: String, onClick: () -> Unit = {}) {
     ) {
         Text(
             text = text,
-            fontSize = 13.sp,
+            fontSize = responsiveFontSize(14.sp,12.sp,14.sp, xlarge = 16.sp),
             modifier = Modifier.padding(start = 10.dp),
             textAlign = TextAlign.Right
         )

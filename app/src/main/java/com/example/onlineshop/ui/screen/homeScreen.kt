@@ -1,5 +1,6 @@
 package com.example.onlineshop.ui.screen
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -25,6 +26,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -49,7 +51,9 @@ import com.example.onlineshop.ui.component.SpacerHeight
 import com.example.onlineshop.ui.theme.LightOrange
 import com.example.onlineshop.ui.theme.Orange
 import com.example.onlineshop.ui.theme.Orange2
+import com.example.onlineshop.ui.utils.responsiveFontSize
 
+@SuppressLint("ConfigurationScreenWidthHeight")
 @Composable
 fun HomeScreen(
 
@@ -133,7 +137,7 @@ fun HomeScreen(
                 title = "مانتو بافت زنانه اچ اندام",
                 price = "1،550،000 ",
                 priceWithDiscount = "2،000،000 ",
-                description = "jjj",
+                description = "product1",
             discount = true
 
 
@@ -145,10 +149,11 @@ fun HomeScreen(
             title = "ست سویشرت و شلوار مردانه",
             price = "1،550،000 ",
             priceWithDiscount = "2،000،000 ",
-            description = "jjj",
-            imageSize = 135.dp,
-            titleFontSize = 10.sp,
-            discount = true
+            description = "product3",
+
+
+
+
 
 
 
@@ -160,7 +165,7 @@ fun HomeScreen(
             title = "مانتو زنانه پروت",
             price = "5،760،000 ",
             priceWithDiscount = "6،300،000 ",
-            description = "jjj",
+            description = "product2",
             discount = true
 
 
@@ -177,7 +182,7 @@ fun HomeScreen(
             title = "مانتو بافت زنانه اچ اندام",
             price = "1،550،000 ",
             priceWithDiscount = "2،000،000 ",
-            description = "jjj",
+            description = "product3",
 
 
 
@@ -274,7 +279,7 @@ val scrollState=rememberScrollState()
                             textAlign = TextAlign.Right,
 
                             color = Color.Black,
-                            fontSize = 18.sp,
+                            fontSize = responsiveFontSize(19.sp,16.sp,20.sp, xlarge = 22.sp),
                             fontWeight = FontWeight.ExtraBold,
 
                             style = TextStyle(
@@ -354,7 +359,7 @@ val scrollState=rememberScrollState()
                                         tint = Orange2,
                                         modifier = Modifier
                                             .size(21.dp)
-                                            .offset(x = (7).dp,y=(-2).dp)
+                                            .offset(x = (7).dp,)
 
                                     )
                                     Icon(
@@ -363,7 +368,7 @@ val scrollState=rememberScrollState()
                                         tint = Orange2,
                                         modifier = Modifier
                                             .size(11.dp)
-                                            .offset(x = (-6).dp,y=(-2).dp)
+                                            .offset(x = (-6).dp,)
 
                                     )
 
@@ -373,7 +378,7 @@ val scrollState=rememberScrollState()
                                         tint = Orange2,
                                         modifier = Modifier
                                             .size(5.dp)
-                                            .offset(x = (-4).dp,y=(-2).dp)
+                                            .offset(x = (-4).dp,)
 
                                     )
 
@@ -382,7 +387,8 @@ val scrollState=rememberScrollState()
                                 Text(
                                     text = "مشاهده همه",
                                     color = Color.Black,
-                                    fontSize = 13.sp,
+                                    fontSize = responsiveFontSize(13.sp,12.sp,14.sp, xlarge = 16.sp),
+                                    fontWeight = FontWeight.Bold
 
 
 
@@ -401,7 +407,7 @@ val scrollState=rememberScrollState()
                                 textAlign = TextAlign.Right,
 
                                 color = Color.Black,
-                                fontSize = 20.sp,
+                                fontSize = responsiveFontSize(22.sp,18.sp,24.sp, xlarge = 28.sp),
                                 fontWeight = FontWeight.ExtraBold,
 
                                 style = TextStyle(
